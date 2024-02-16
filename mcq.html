@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Choice Question Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    h2 {
+        margin-top: 0;
+    }
+    .question {
+        margin-bottom: 15px;
+    }
+    .option {
+        margin-bottom: 10px;
+    }
+    .correct {
+        color: green;
+    }
+    .incorrect {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Multiple Choice Questionnaire</h2>
+    <form  method="post" action="#" id="mcqForm">
+        
+        <div class="question">
+            <p>1. What is the capital of France?</p>
+            <div class="option">
+                <input type="radio" id="paris" name="question1" value="paris">
+                <label for="paris">Paris</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="london" name="question1" value="london">
+                <label for="london">London</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="berlin" name="question1" value="berlin">
+                <label for="berlin">Berlin</label>
+            </div>
+        </div>
+        
+        <div class="question">
+            <p>2. What is the largest planet in our solar system?</p>
+            <div class="option">
+                <input type="radio" id="mars" name="question2" value="mars">
+                <label for="mars">Mars</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="venus" name="question2" value="venus">
+                <label for="venus">Venus</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="jupiter" name="question2" value="jupiter">
+                <label for="jupiter">Jupiter</label>
+            </div>
+        </div>
+        
+        <div class="question">
+            <p>3. Who wrote the play "Hamlet"?</p>
+            <div class="option">
+                <input type="radio" id="shakespeare" name="question3" value="shakespeare">
+                <label for="shakespeare">William Shakespeare</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="dickens" name="question3" value="dickens">
+                <label for="dickens">Charles Dickens</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="homer" name="question3" value="homer">
+                <label for="homer">Homer</label>
+            </div>
+        </div>
+        
+        <div class="question">
+            <p>4. What is the chemical symbol for water?</p>
+            <div class="option">
+                <input type="radio" id="h2o" name="question4" value="h2o">
+                <label for="h2o">H<sub>2</sub>O</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="co2" name="question4" value="co2">
+                <label for="co2">CO<sub>2</sub></label>
+            </div>
+            <div class="option">
+                <input type="radio" id="o2" name="question4" value="o2">
+                <label for="o2">O<sub>2</sub></label>
+            </div>
+        </div>
+        
+        <div class="question">
+            <p>5. Who painted the Mona Lisa?</p>
+            <div class="option">
+                <input type="radio" id="picasso" name="question5" value="Pablo Picasso">
+                <label for="picasso">Pablo Picasso</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="da_vinci" name="question5" value="Leonardo da Vinci">
+                <label for="da_vinci">Leonardo da Vinci</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="vangogh" name="question5" value="Vincent van Gogh">
+                <label for="vangogh">Vincent van Gogh</label>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    let ans = ['paris','venus','homer','co2','Pablo Picasso'];
+    $(document).ready(function(){
+        $('#mcqForm').submit(function(e){
+            e.preventDefault();
+            let correctCount = 0;
+            let incorrectCount = 0;
+            
+            // Check each question's answer
+            $('input[type="radio"]:checked').each(function(index){
+                let userAnswer = $(this).val();
+                if(userAnswer === ans[index]) {
+                    correctCount++;
+                    $(this).next('label').addClass('correct');
+                } else {
+                    incorrectCount++;
+                    $(this).next('label').addClass('incorrect');
+                }
+            });
+
+            // Display the result
+            alert(`Correct Answers: ${correctCount}\nIncorrect Answers: ${incorrectCount}`);
+        });
+    });
+</script>
+
+</body>
+</html>
